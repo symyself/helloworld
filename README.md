@@ -1,1 +1,2 @@
-# my basic notes for learning,shell,py :D
+=======
+# my basic notes for learning,shell,py-.-
