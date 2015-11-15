@@ -152,8 +152,9 @@ function startsongy()
     if ! $cmd ls | grep $session
     then
         $cmd new -d -n vim -s $session "bash"
+        $cmd neww -n ipython -t $session "bash"
+        $cmd neww -n log -t $session "bash"
         $cmd neww -n shell -t $session "bash"
-        $cmd neww -n ipython -t $session "ipython"
         $cmd neww -n mysql -t $session "mysql -uroot -p'optest'"
         $cmd neww -n redis1 -t $session "redis-cli -n 1"
         $cmd neww -n redis2 -t $session "redis-cli -n 2"

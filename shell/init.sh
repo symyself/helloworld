@@ -245,7 +245,8 @@ function confirm()
 	pip_url=http://192.168.0.165:9999/python/get-pip.py
 
     #redis
-    redis_url=http://download.redis.io/releases/redis-2.6.17.tar.gz
+    #redis_url=http://download.redis.io/releases/redis-2.6.17.tar.gz
+    redis_url=http://download.redis.io/releases/redis-3.0.5.tar.gz
     #aliase
     aliases_url=http://192.168.0.165:9999/specific_aliases_and_functions.sh
 }
@@ -253,7 +254,7 @@ function main()
 {
 	confirm
 	###stop_useless_service
-	###disable_selinux
+	disable_selinux
 	###set_yum
 	###install_usefull_tools
 	####set_vim
