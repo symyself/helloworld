@@ -1,6 +1,7 @@
 #!/bin/env python2.7
 #! -*- coding: UTF-8 -*-
 import functools
+import sys
 '''
 learn decorator
 '''
@@ -13,16 +14,16 @@ def func0():
 装饰函数的参数是被装饰的函数对象，返回原函数对象
 装饰的实质语句: myfunc = deco(myfunc)'''
 def decorator1(func):
-    print 'before func .'
+    print 'before func .',func.__name__
     func()
-    print 'after func ..'
+    print 'after func .',func.__name__
     return func
 
 '''示例3: 使用语法糖@来装饰函数，相当于“myfunc = deco(myfunc)”
 但发现新函数只在第一次被调用，且原函数多调用了一次'''
 @decorator1
 def func1():
-    print 'func1 print this'
+    print 'in func1 print this'
 
 '''示例4: 使用内嵌包装函数来确保每次新函数都被调用，
 内嵌包装函数的形参和返回值与原函数相同，装饰函数返回内嵌包装函数对象'''
@@ -49,7 +50,7 @@ def decorator3(func):
 
 @decorator3
 def func3(name,age):
-    print 'my name is %s , i am %d years old!' %(name,age)
+    print 'in func3: my name is %s , i am %d years old!' %(name,age)
 
 '''示例6: 对参数数量不确定的函数进行装饰，
 参数用(*args, **kwargs)，自动适应变参和命名参数'''
@@ -113,12 +114,16 @@ if __name__ == "__main__":
     #func3()
     func2()
 
+    func2()
+
+
     func3('songy',18)
     func3('songy',19)
 
     func4(1,2,3,4,name='songyangg')
     func4(1,2,3,4,5,6,age=20,name='songyangg')
     func7(1,3,1,2,3,4,age=20,year=2015)
+    sys.exit()
     print func7.__name__
     print func7.__doc__
     print func7.__dict__
