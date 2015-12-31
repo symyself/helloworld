@@ -39,18 +39,25 @@ match WhitespaceEOL /\s\+$/
 "显示tab为→,末尾的空白为.
 set list listchars=tab:→\ ,trail:·
 
+
 " easier moving between tabs
 " <Leader> 默认是\
 " \n \m切换tab,就像gt gT
-map <Leader>n <esc>:tabprevious<CR>
-map <Leader>m <esc>:tabnext<CR>
+map <Leader>j <esc>:tabprevious<CR>
+map <Leader>l <esc>:tabnext<CR>
 
 "已打开的文件buf
-map <Leader>bn <esc>:bprev<CR>
-map <Leader>bm <esc>:bnext<CR>
+map <Leader>bp <esc>:bprev<CR>
+map <Leader>bn <esc>:bnext<CR>
 
-"快速插入python 编码
-noremap <Leader>py27 i#!/bin/env python2.7<CR>#! -*- coding: UTF-8 -*-<CR><ESC>
+"快速插入python2.7 及 编码
+noremap <Leader>py27 <esc>ggI#!/bin/env python2.7<CR>#! -*- coding: UTF-8 -*-<CR><ESC>
+
+"删除开头部分的空白
+map 111 :s/^\s\+//<CR>
+
+"删除结尾部分的空白
+map 222 :s/\s\+$//<CR>
 
 "map sort function to a key
 "在virtual模式下 输入\sort对选中的排序
@@ -129,6 +136,10 @@ Bundle 'c.vim'
 Bundle 'matrix.vim--Yang'
 
 
+"https://github.com/mattn/emmet-vim
+" html 快速补全
+Bundle 'mattn/emmet-vim'
+
 "buffexplorer
 " bufexplorer插件可以打开历史文件列表以达到快速切换文件的目的
 Bundle 'bufexplorer.zip'
@@ -204,7 +215,7 @@ set tags=tags
 "bling/vim-airline
 "https://github.com/bling/vim-airline
 Bundle 'bling/vim-airline'
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -228,6 +239,8 @@ let g:ctrlp_max_height = 30
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
+set wildignore+=*/blog_venv/*
+set wildignore+=*/venv/*
 
 
 """" Settings for jedi-vim
