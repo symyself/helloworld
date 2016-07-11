@@ -160,12 +160,13 @@ function install_python27()
 	cd ${download_dir}
 	wget ${python27_url}
 	tar zxf $(basename ${python27_url})
-	yum install openssl openssl-devel python-devel sqlite-devel readline readline-devel patch mlocate -y
+	yum install openssl gcc openssl-devel python-devel sqlite-devel readline readline-devel patch mlocate -y
 	cd Python-2.7*
 	./configure
 	make
 	make install
 
+    #    wget https://bootstrap.pypa.io/ez_setup.py -O - | python
 	cd ${download_dir}
 	wget ${ez_setup_url}
 	wget ${pip_url}

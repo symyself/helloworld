@@ -1,0 +1,11 @@
+wget https://www.python.org/ftp/python/2.7.12/Python-2.7.12.tgz
+tar xf Python-2.7.12.tgz
+
+yum install gcc openssl openssl-devel python-devel sqlite-devel readline readline-devel patch mlocate -y
+./configure
+make
+make install
+
+wget https://bootstrap.pypa.io/ez_setup.py -O - | python2.7
+wget https://bootstrap.pypa.io/get-pip.py
+python2.7 get-pip.py

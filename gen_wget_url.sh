@@ -13,8 +13,8 @@ do
             echo ${fabs_path} | sed "s#^${document_dir}#${base_url}#"
         else
             echo "  error: ${fabs_path} no in dir ${document_dir}"
-        fi  
+        fi
     else
         echo "$f not exist"
-    fi  
+    fi
 done
