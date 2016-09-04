@@ -1,0 +1,7 @@
+将本地dev分支推到github
+[root@tc-zh-0002 helloworld]# git push -u origin dev
+Total 0 (delta 0), reused 0 (delta 0)
+To git@github.com:symyself/helloworld.git
+ * [new branch]      dev -> dev
+ Branch dev set up to track remote branch dev from origin.
+ [root@tc-zh-0002 helloworld]#
