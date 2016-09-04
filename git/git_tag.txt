@@ -1,0 +1,4 @@
+git tag -a v1.1.1 -m 'first tag'
+git tag
+git show v1.1.1
+git push --tags
