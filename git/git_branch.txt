@@ -1,7 +1,28 @@
-将本地dev分支推到github
+将本地新dev分支推到github(远程还没有对应分支)
 [root@tc-zh-0002 helloworld]# git push -u origin dev
 Total 0 (delta 0), reused 0 (delta 0)
 To git@github.com:symyself/helloworld.git
- * [new branch]      dev -> dev
- Branch dev set up to track remote branch dev from origin.
- [root@tc-zh-0002 helloworld]#
+* [new branch]      dev -> dev
+Branch dev set up to track remote branch dev from origin.
+[root@tc-zh-0002 helloworld]#
+
+#将本地分支dev推到远程
+git push origin dev
+#从远程拉去dev到本地
+git pull origin dev
+
+#要将已经提交到远程的分支回到上一个commit
+#1 备份
+git co -b dev_backup
+#2 将本地dev 回到上一个commit
+git co dev
+bit reset --hard 3b5b0ac
+#3 删掉远程的dev
+git push origin :dev
+#4 重新将本地dev推到远程
+git push origin dev
+git reflog
+history 
+
+
+
