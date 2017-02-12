@@ -1,6 +1,37 @@
 #!/bin/sh
 
 ##打印终端颜色
+RESET_COLOR='\e[0m'
+RED_COLOR='\e[31m'
+GREEN_COLOR='\e[32m'
+YELLOW_COLOR='\e[33m'
+BLUE_COLOR='\e[34m'
+PINK_COLOR='\e[35m'
+CYAN_COLOR='\e[36m'
+
+RESET_COLOR='\[\e[0m\]'
+RED_COLOR='\[\e[31m\]'
+GREEN_COLOR='\[\e[32m\]'
+YELLOW_COLOR='\[\e[33m\]'
+BLUE_COLOR='\[\e[34m\]'
+PINK_COLOR='\[\e[35m\]'
+CYAN_COLOR='\[\e[36m\]'
+
+PS1="${RED_COLOR}\u${RESET_COLOR}\
+    ${YELLOW_COLOR}@${RESET_COLOR}\
+    ${GREEN_COLOR}\h${RESET_COLOR}\
+    ${PINK_COLOR}:${RESET_COLOR}\
+    ${BLUE_COLOR}\w${RESET_COLOR}\
+    ${CYAN_COLOR}\$${RESET_COLOR}"
+
+function _test_color()
+{
+    for front_color in 30 31 32 33 34 35 36 37 38 39
+    do
+        echo -e "\e[${front_color}m${front_color}\e[0m"
+    done
+}
+
 function _red()
 {
 #red
@@ -19,6 +50,41 @@ function _yellow()
     msg=$*
     echo -e "\033[0;33;1m${msg}\033[0m"
 }
+
+
+function _red_str()
+{
+    msg="$@"
+    echo "\033[0;31;1m${msg}\033[0m"
+}
+function _green_str()
+{
+    msg="$@"
+    echo "\033[0;32;1m${msg}\033[0m"
+}
+function _yellow_str()
+{
+    msg="$*"
+    echo "\033[0;33;1m${msg}\033[0m"
+}
+function _blue_str()
+{
+    msg="$*"
+    echo "\033[0;34;1m${msg}\033[0m"
+}
+function _purple_red_str()
+{
+    #紫红色
+    msg="$*"
+    echo "\033[0;35;1m${msg}\033[0m"
+}
+function _cyan_str()
+{
+    #青蓝色
+    msg="$*"
+    echo "\033[0;36;1m${msg}\033[0m"
+}
+
 function _w()
 {
     msg=$*
@@ -84,6 +150,24 @@ function _mac_addr()
 {
     mac_addr=$(/sbin/ifconfig  | /bin/grep -Po '(?<=HWaddr ).*' | sort | uniq)
     echo "${mac_addr}"
+}
+function _color_()
+{
+    #/bin/bash
+    for STYLE in 0 1 2 3 4 5 6 7; do
+      for FG in 30 31 32 33 34 35 36 37; do
+        for BG in 40 41 42 43 44 45 46 47; do
+          CTRL="\033[${STYLE};${FG};${BG}m"
+          echo -en "${CTRL}"
+          echo -n "${STYLE};${FG};${BG}"
+          echo -en "\033[0m"
+        done
+        echo
+      done
+      echo
+    done
+    # Reset
+    echo -e "\033[0m" 
 }
 #_hadware_info | tr '\n' '#'
 _ip_addr
